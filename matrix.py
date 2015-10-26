@@ -1,3 +1,6 @@
+# Before running this app, install max7218 driver.
+# The driver and HOWTO can be found at https://github.com/rm-hull/max7219 
+
 import max7219.led as led
 import time
 
