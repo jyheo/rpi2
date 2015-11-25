@@ -1,7 +1,7 @@
 import smbus
 import time
 import sys
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -10,9 +10,9 @@ address = 0x48
 
 @app.route("/")
 def index():
-	return redirect(url_for('static', filename='yl40-ajax.html'))
+	return render_template('yl40-ajax.html')
 
-@app.route("/ain/<int:ain_addr>")
+@app.route("/ain/<int:ain_addr>", methods=['POST', 'GET'])
 def analog_in(ain_addr):
 	# 192.168.0.6:5000/ain/0
 	bus.write_byte(address, 0x40 + ain_addr)
@@ -20,7 +20,7 @@ def analog_in(ain_addr):
 	aread = bus.read_byte(address)
 	return '%d' % (aread)
 
-@app.route("/aout/<int:val>")
+@app.route("/aout/<int:val>", methods=['POST', 'GET'])
 def analog_out(val):
 	# 192.168.0.6:5000/aout/0
 	bus.write_byte_data(address, 0x40, val)

@@ -20,12 +20,12 @@ function loadTemp() {
       document.getElementById("temp").innerHTML = xhttp.responseText;
     }
   };
-  xhttp.open("GET", "/ain/0", true);
+  xhttp.open("POST", "/ain/0", true);
   xhttp.send();
 }
 function ledOn() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/aout/255", true);
+  xhttp.open("POST", "/aout/255", true);
   xhttp.send();
 }
 </script>
