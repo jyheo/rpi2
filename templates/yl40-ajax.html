@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<table>
+<tr>
+<td>Temperature: </td>
+<td><div id="temp">Click Update Button</div></td>
+<td><button type="button" onclick="loadTemp()">Update</button></td>
+</tr>
+</table>
+<p>
+LED
+<button type="button" onclick="ledOn()">On</button>
+
+<script>
+function loadTemp() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("temp").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "/ain/0", true);
+  xhttp.send();
+}
+function ledOn() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/aout/255", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
+
