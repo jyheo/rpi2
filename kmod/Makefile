@@ -1,4 +1,4 @@
-obj-m += kmod.o chardd.o
+obj-m += kmod.o chardd.o ioctl_ex.o
 
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
