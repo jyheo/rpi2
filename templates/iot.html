@@ -1,0 +1,16 @@
+<html>
+<button type="button" onclick="ledon()">LED ON</button>
+<p id="result">result</p>
+<script>
+function ledon() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("result").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/ledon", true);
+  xhttp.send();
+}
+</script>
+</html>
