@@ -20,6 +20,6 @@ while True:
 	bus.write_byte(address, input_addr)
 	bus.read_byte(address)
 	aread = bus.read_byte(address)
-	print aread
+	print(aread)
 	time.sleep(0.2)
 
