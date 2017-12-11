@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+<h2> Motion JPEG </h2>
+
+<form id="config_form">
+  Annotate Text:
+  <input type="text" name="annotate" id="annotate_text" value="{{annotate_text}}">
+  <button type="button" onclick="config_save()">Save</button>
+  <br/>
+  Brightness:
+  <input type="range" name="brightness" id="brightness" min="0" max="100" value="{{brightness}}">
+  <button type="button" onclick="config_brightness()">Save</button>
+</form>
+
+<hr>
+
+<iframe src="/video_feed" width="320" height="240"></iframe>
+
+<script>
+function config_save() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //document.getElementById("result").innerHTML = this.responseText;
+        }
+    };
+    var atext = document.getElementById("annotate_text").value
+    xhttp.open("GET", "/config_annotate/" + atext, true);
+    xhttp.send();
+}
+function config_brightness() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //document.getElementById("result").innerHTML = this.responseText;
+        }
+    };
+    var atext = document.getElementById("brightness").value
+    xhttp.open("GET", "/config_brightness/" + atext, true);
+    xhttp.send();
+}
+</script>
+
+</body>
+</html>
