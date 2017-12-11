@@ -22,6 +22,10 @@
 
 <iframe src="/video_feed" width="320" height="240"></iframe>
 
+<hr>
+<button type="button" onclick="capture()">Capture</button>
+<div id="capture_img"></div>
+
 <script>
 function config_save() {
     var xhttp = new XMLHttpRequest();
@@ -44,6 +48,11 @@ function config_brightness() {
     var atext = document.getElementById("brightness").value
     xhttp.open("GET", "/config_brightness/" + atext, true);
     xhttp.send();
+}
+function capture() {
+    var ts = new Date().getTime();
+    document.getElementById("capture_img").innerHTML = 
+        "<img src='/capture?timestamp=" + ts + "'/>";
 }
 </script>
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, redirect
+from flask import Flask, render_template, Response, redirect, send_file
 from picamera import PiCamera
 import io
 
@@ -44,6 +44,12 @@ def gen():
 def video_feed():
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/capture')
+def capture():
+    camera.capture('foo.jpg')
+    return send_file('foo.jpg')
 
 
 if __name__ == '__main__':
